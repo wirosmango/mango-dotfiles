@@ -1,0 +1,118 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top",
+    "height": 15, // Waybar height
+    "margin-top": 5,
+    "margin-left": 5,
+    "margin-right": 5,
+    // Choose the order of the modules
+    "modules-left": ["ext/workspaces","mpris"],
+    "modules-center": ["clock#1","custom/calendar"],
+    "modules-right": ["pulseaudio","backlight","battery","bluetooth","tray"],
+    // Modules configuration
+    "ext/workspaces": {
+    	"format": "{name}",
+    	"on-click": "activate",
+    	"sort-by-id": true
+    },
+    "tray": {
+	//"icon-size": 21,
+        "spacing": 10
+    },
+    "clock#1": {
+        "format": "{:%H:%M:%S %d %B %Y}",
+		"interval": 1,
+        "tooltip": true,
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>"
+    },
+    "cpu": {
+        "format": "{usage}% "
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "network": {
+        // "interface": "wlp2s0", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-disconnected": "Disconnected ⚠"
+        },
+        "battery": {
+	        "states": {
+	            "good": 100,
+	            "warning": 30,
+	            "critical": 10
+	        },
+	        "format": "{icon} {capacity}%",
+	        "format-charging": " {capacity}%",
+	        "format-plugged": " {capacity}%",
+	        "format-alt": "{icon} {time}",
+	        // "format-good": "", // An empty format will hide the module
+	        "format-full": " {capacity}%",
+	        "format-icons": [
+	        " ",
+	        "",
+	        "",
+	        "",
+	        "",
+	        ],
+	        "interval": 2
+    },
+    "pulseaudio": {
+        "scroll-step": 5,
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "on-click": "kitty -e wiremix"
+    },
+    "mpris": {
+     	"format": "{status_icon} {artist} - {title}",
+     	"format-stopped": "",
+     	"status-icons": {
+     		"playing": "",
+     		"paused": "󰐊",
+     		},
+     	},
+     	"bluetooth": {
+     	  "format": "{icon}",
+     	  "format-icons": {
+     	    "enabled": "",
+     	    "disabled": "!"
+     	},
+     	"on-click": "kitty -e bluetui"
+     },
+     "custom/calendar": {
+     	"format": "📅",
+     	"tooltip": true,
+     	"exec": "echo '{\"text\":\" \",\"tooltip\":\"calcure\"}'",
+     	"return-type": "json",
+     	"on-click": "kitty -e calcure",
+     },
+       "backlight": {
+        // "device": "acpi_video1",
+        "format": "{icon} {percent}%",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "interval": 2
+        },
+    }
+}
+//
