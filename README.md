@@ -1,5 +1,5 @@
 # mango-dotfiles
-My dotfiles for mangowm 
+My dotfiles for mangowc
 
 # Screenshot
 
